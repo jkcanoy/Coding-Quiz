@@ -1,5 +1,27 @@
-// array of questions/options
+// Variables elements
+var quizWrapper = document.getElementById("quizwrapper");
 
+var timer = document.getElementById("timer");
+var timeLeft = document.getElementById("timeleft");
+
+var info = document.getElementById("info");
+var startBtn = document.getElementById("start-btn");
+
+var quizDiv = document.getElementById("quiz");
+var question = document.getElementById("question");
+var optionA = document.getElementById("btn1");
+var optionB = document.getElementById("btn2");
+var optionC = document.getElementById("btn3");
+var optionD = document.getElementById("btn4");
+var checkAnswer = document.getElementById("checkanswer");
+
+var endScreen = document.getElementById("endscreen");
+var initialSubmitBtn = document.getElementById("initial-btn");
+var initialInput = document.getElementById("initials");
+
+var highScorePage = document.getElementById("score-page");
+
+// array of questions/options
 var questions = [
     {
         question: "What does DOM stand for?",
@@ -37,3 +59,4 @@ var questions = [
         answer: "d. 0"
     },
 ]
+

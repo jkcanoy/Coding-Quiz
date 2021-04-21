@@ -15,7 +15,7 @@
     <!-- Highscores and Timer -->
     <nav>
         <button id="highscores">High Scores</button>
-        <div id="timer">Time:<span id="time">0</span></div>
+        <div id="timer">Time:<span id="timeleft">0</span></div>
     </nav>
 
     <!-- Intro  -->
@@ -25,7 +25,7 @@
             <p>
                 Answer the following questions within the time limit. Keep in mind incorrect answers will subtract 10 seconds from the clock. Good luck!
             </p>
-            <button>Start</button>
+            <button id="start-btn">Start</button>
         </section>
 
         <!-- Quiz Container -->
@@ -33,25 +33,26 @@
             <!-- question -->
             <p id="question"></p>
             <!-- buttons for answers -->
-            <button></button>
-            <button></button>
-            <button></button>
-            <button></button>
+            <button id="btn1"></button>
+            <button id="btn2"></button>
+            <button id="btn3"></button>
+            <button id="btn4"></button>
+            <p id="checkanswer" style="display: none;"></p>
         </section>
 
         <!-- Score submition -->
         <section id="endscreen" class="hide">
             <h1>Great Work!</h1>
-            <p>Your final score is <span id="score"></span></p>
+            <p>Your final score is <span id="finalscore"></span></p>
             <div id="store">
-                <p>Enter your initials: </p><input id="initials" type="text"><button>Submit</button>
+                <p>Enter your initials: </p><input id="initials" type="text"><button id="initial-btn">Submit</button>
             </div>
         </section>
 
         <!-- High score page -->
-        <section id="score-page" class="hide">
+        <section id="scorepage" class="hide">
             <h1>High Scores</h1>
-            <div></div>
+            <div id="highscorelist"></div>
             <button id="reset">Go Back</button> <button id="clear">Clear High Scores</button>
         </section>
     </div>
