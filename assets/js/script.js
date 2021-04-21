@@ -1,26 +1,3 @@
-// Variables elements
-var quizWrapper = document.getElementById("quizwrapper");
-
-var timer = document.getElementById("timer");
-var timeLeft = document.getElementById("timeleft");
-
-var info = document.getElementById("info");
-var startBtn = document.getElementById("start-btn");
-
-var quizDiv = document.getElementById("quiz");
-var question = document.getElementById("question");
-var optionA = document.getElementById("btn1");
-var optionB = document.getElementById("btn2");
-var optionC = document.getElementById("btn3");
-var optionD = document.getElementById("btn4");
-var checkAnswer = document.getElementById("checkanswer");
-
-var endScreen = document.getElementById("endscreen");
-var initialSubmitBtn = document.getElementById("initial-btn");
-var initialInput = document.getElementById("initials");
-
-var highScorePage = document.getElementById("score-page");
-
 // array of questions/options
 var questions = [
     {
@@ -60,3 +37,64 @@ var questions = [
     },
 ]
 
+// declare variables
+var quizWrapperEl = document.getElementById("quizwrapper");
+
+var timerEl = document.getElementById("timer");
+var timeLeftEl = document.getElementById("timeleft");
+
+var infoEl = document.getElementById("info");
+var startBtnEl = document.getElementById("start-btn");
+
+var quizDivEl = document.getElementById("quiz");
+var questionEl = document.getElementById("question");
+var optionAEl = document.getElementById("btn1");
+var optionBEl = document.getElementById("btn2");
+var optionCEl = document.getElementById("btn3");
+var optionDEl = document.getElementById("btn4");
+var checkAnswerEl = document.getElementById("checkanswer");
+
+var endScreenEl = document.getElementById("endscreen");
+var initialSubmitBtnEl = document.getElementById("initial-btn");
+var initialInputEl = document.getElementById("initials");
+
+var highScorePageEl = document.getElementById("scorepage");
+var finalScoreEl = document.getElementById("finalscore");
+
+var goBackEl = document.getElementById("reset");
+var clearHighScoresEl = document.getElementById("clear");
+var viewHighScoresEl = document.getElementById("highscores");
+var highScoreListEl = document.getElementById("highscorelist");
+
+var correctAnswers = 0;
+var questionNumber = 0;
+var results;
+var questionIndex = 0;
+
+
+// functions
+
+// when start button is clicked, timer starts
+startBtnEl.addEventListener("click", newQuiz);
+
+var timeTotal = 90;
+function newQuiz() {
+    questionIndex = 0;
+    timeTotal = 90;
+    timeLeftEl.textContent = timeTotal;
+    initialInputEl.textContent = "";
+
+    infoEl.style.display = "none";
+    quizDivEl.classList.replace("hide", "show");
+
+    var startTimer = setInterval(function() {
+        timeTotal--;
+        timeLeftEl.textContent = timeTotal;
+        if(timeTotal <= 0) {
+            clearInterval(startTimer);
+            if (questionIndex < questions.length - 1) {
+                gameOver();
+            }
+        }
+    },1000);
+}

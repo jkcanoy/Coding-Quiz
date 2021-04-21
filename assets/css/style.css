@@ -42,7 +42,7 @@ section {
     max-width: 50%;
 }
 
-.quizwrapper {
+.show {
     display: flex;
     flex-direction: column;
     justify-content: center;
