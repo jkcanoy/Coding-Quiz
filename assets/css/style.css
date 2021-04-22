@@ -1,6 +1,5 @@
 :root {
     --dark: #222831;
-    --light: #f4eee8;
     --blue: #114e60;
     --white: #eeeeee;
 }
@@ -20,16 +19,13 @@ nav {
 
 #highscores {
     left: 20px;
-    background-color: var(--blue);
-    color: var(--white);
-    border-radius: 5px;
-    padding: 10px;
     font-size: 20px
 }
 
 #timer {
     right: 20px;
-    color: var(--white)
+    color: var(--white);
+    margin: 5px 0px 5px 0px;
 }
 
 html, body {
@@ -40,6 +36,7 @@ html, body {
 
 section {
     max-width: 50%;
+    min-width: 50%;
 }
 
 .quizwrapper {
@@ -73,4 +70,15 @@ button {
     border-radius: 5px;
     cursor: pointer;
     margin: 5px 0px 5px 0px;
+    transition-duration: 0.4s;
+}
+
+button:hover {
+    background-color: var(--white);
+    color: var(--dark);
+    border: 2px solid var(--blue)
+}
+
+#initials {
+    margin-right: 5px;
 }

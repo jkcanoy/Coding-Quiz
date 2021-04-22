@@ -32,10 +32,10 @@ var questions = [
     },
     {
         question: "The first index of an array is ____.",
-        choices: ["a. first", "b. 1", "c. 8", "d. 0"],
+        options: ["a. first", "b. 1", "c. 8", "d. 0"],
         answer: "d. 0"
-    },
-]
+    }
+];
 
 // declare variables
 var quizWrapperEl = document.getElementById("quizwrapper");
@@ -91,11 +91,9 @@ function newQuiz() {
     var startTimer = setInterval(function() {
         timeTotal--;
         timeLeftEl.textContent = timeTotal;
-        if(timeTotal <= 0) {
+        if(timeTotal === 0) {
             clearInterval(startTimer);
-            if (questionIndex < questions.length - 1) {
-                gameOver();
-            }
+            gameOver ();
         }
     },1000);
 
@@ -152,5 +150,22 @@ optionDEl.addEventListener("click", chooseD);
 // end screen with final score and initial submition
 function gameOver() {
 
-    endScreenEl.
+    endScreenEl.classList.replace("hide", "info");
+    infoEl.style.display = "none";
+    quizDivEl.style.display = "none";
+    timerEl.style.display = "none";
+
+    finalScoreEl.textContent = correctAnswers;
+}
+
+// enter initials and store highscore in local storage
+function storeHighScore(event) {
+    event.preventDefault();
+
+    if (initialInputEl.value === "") {
+        alert("Enter your initials please!");
+        return;
+    }
+
+    
 }
