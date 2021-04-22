@@ -2,7 +2,7 @@
 var questions = [
     {
         question: "What does DOM stand for?",
-        options: ["a. Document Object Model", "b. Data Ordered Modem", "c. Dumb Old Me", "d. Data Object Model"],
+        options: ["a. Document Object Model", "b. Data Ordered Modem", "c. Dumb Ole Me", "d. Data Object Model"],
         answer: "a. Document Object Model"
     },
     {
@@ -11,7 +11,7 @@ var questions = [
         answer: "c. Hyper Text Markup Language"
     },
     {
-        question: "____ is very useful tool to use when you do not understand something.",
+        question: "____ is very useful tool to use when you are stuck or do not understand something.",
         options: ["a. Google", "b. Thoughts and Prayers", "c. Crying", "d. Giving Up"],
         answer: "a. Google"
     },
@@ -52,6 +52,7 @@ var optionAEl = document.getElementById("btn1");
 var optionBEl = document.getElementById("btn2");
 var optionCEl = document.getElementById("btn3");
 var optionDEl = document.getElementById("btn4");
+var lineBreak = document.getElementById("linebreak");
 var checkAnswerEl = document.getElementById("checkanswer");
 
 var endScreenEl = document.getElementById("endscreen");
@@ -97,4 +98,59 @@ function newQuiz() {
             }
         }
     },1000);
+
+    showQuiz();
+};
+
+// questions and options appear
+function showQuiz() {
+    nextQuestion();
+}
+
+function nextQuestion() {
+    questionEl.textContent = questions[questionIndex].question;
+    optionAEl.textContent = questions[questionIndex].options[0];
+    optionBEl.textContent = questions[questionIndex].options[1];
+    optionCEl.textContent = questions[questionIndex].options[2];
+    optionDEl.textContent = questions[questionIndex].options[3];
+}
+
+function answerCheck(answer) {
+
+    lineBreak.style.display = "block";
+    checkAnswerEl.style.display = "block";
+
+    if(questions[questionIndex].answer === questions[questionIndex].options[answer]) {
+        // answer correct add 1 point to final score
+        correctAnswers++;
+        checkAnswerEl.textContent = "Correct!";
+    }   else {
+        // wrong answer deduct 10 sec from timer
+        timeTotal -= 10;
+        timeLeftEl.textContent = timeTotal;
+        checkAnswerEl.textContent= "*in Trump voice* Wrong!"
+    }
+
+    questionIndex++;
+    if (questionIndex < questions.length) {
+        nextQuestion();
+    } else {
+        gameOver();
+    }
+}
+
+function chooseA() {answerCheck(0);}
+function chooseB() {answerCheck(1);}
+function chooseC() {answerCheck(2);}
+function chooseD() {answerCheck(3);}
+
+optionAEl.addEventListener("click", chooseA);
+optionBEl.addEventListener("click", chooseB);
+optionCEl.addEventListener("click", chooseC);
+optionDEl.addEventListener("click", chooseD);
+
+// end screen with final score and initial submition
+function gameOver() {
+
+    endScreenEl.
 }
