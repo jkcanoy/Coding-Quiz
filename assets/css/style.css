@@ -58,7 +58,7 @@ section {
     align-items: flex-start;
 }
 
-#info {
+.info {
     text-align: center;
 }
 

@@ -165,7 +165,7 @@ function storeHighScore(event) {
         return;
     }
 
-    infoEl.classList.replace("info", "hide");
+    infoEl.style.display = "none";
     timerEl.style.display = "none";
     endScreenEl.style.display = "none";
     highScorePageEl.classList.replace("hide", "info");
@@ -202,6 +202,7 @@ function showHighScores() {
     quizDivEl.style.display = "none";
     timerEl.style.display = "none";
     endScreenEl.style.display = "none";
+    highScorePageEl.classList.replace("hide", "info");
 
     var savedScores = localStorage.getItem("high scores");
 
@@ -231,8 +232,7 @@ viewHighScoresEl.addEventListener("click", function(event) {
 });
 
 goBackEl.addEventListener("click", function() {
-    infoEl.style.display = "flex";
-    infoEl.style.flexDirection = "column";
+    infoEl.style.display = "unset";
     highScorePageEl.classList.replace("info", "hide");
 });
 
