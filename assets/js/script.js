@@ -76,8 +76,6 @@ var questionIndex = 0;
 // functions
 
 // when start button is clicked, timer starts
-startBtnEl.addEventListener("click", newQuiz);
-
 var timeTotal = 90;
 function newQuiz() {
     questionIndex = 0;
@@ -159,10 +157,6 @@ function gameOver() {
 }
 
 // enter initials and store highscore in local storage
-initialSubmitBtnEl.addEventListener("click", function(event) {
-    storeHighScore(event)
-});
-
 function storeHighScore(event) {
     event.preventDefault();
 
@@ -224,6 +218,13 @@ function showHighScores() {
         highScoreListEl.appendChild(newScores);
     }
 }
+
+// event listeners
+startBtnEl.addEventListener("click", newQuiz);
+
+initialSubmitBtnEl.addEventListener("click", function(event) {
+    storeHighScore(event)
+});
 
 viewHighScoresEl.addEventListener("click", function(event) { 
     showHighScores(event);
