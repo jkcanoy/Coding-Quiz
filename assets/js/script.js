@@ -159,6 +159,10 @@ function gameOver() {
 }
 
 // enter initials and store highscore in local storage
+initialSubmitBtnEl.addEventListener("click", function(event) {
+    storeHighScore(event)
+});
+
 function storeHighScore(event) {
     event.preventDefault();
 
@@ -167,5 +171,72 @@ function storeHighScore(event) {
         return;
     }
 
-    
+    infoEl.classList.replace("info", "hide");
+    timerEl.style.display = "none";
+    endScreenEl.style.display = "none";
+    highScorePageEl.classList.replace("hide", "info");
+
+    // store in local storage
+    var savedScores = localStorage.getItem("high scores")
+    var scoresArr ;
+
+    if (savedScores === null) {
+        scoresArr = [];
+    }  else {
+        scoresArr = JSON.parse(savedScores)
+    }
+
+    var userScore = {
+        initials: initialInputEl.value,
+        score: finalScoreEl.textContent
+    };
+
+    console.log(userScore);
+    scoresArr.push(userScore);
+
+    var scoresArrString = JSON.stringify(scoresArr);
+    window.localStorage.setItem("high scores", scoresArrString);
+
+    showHighScores();
 }
+
+// show high scores
+var i = 0;
+function showHighScores() {
+
+    infoEl.style.display = "none";
+    quizDivEl.style.display = "none";
+    timerEl.style.display = "none";
+    endScreenEl.style.display = "none";
+
+    var savedScores = localStorage.getItem("high scores");
+
+    if (savedScores === null) {
+        return;
+    }
+    console.log(savedScores);
+    
+    var storedScores = JSON.parse(savedScores);
+
+    for(; i < storedScores.length; i++) {
+        var newScores = document.createElement("p");
+        newScores.innerHTML = storedScores[i].initials + ": " + storedScores[i].score;
+        highScoreListEl.appendChild(newScores);
+    }
+}
+
+viewHighScoresEl.addEventListener("click", function(event) { 
+    showHighScores(event);
+});
+
+goBackEl.addEventListener("click", function() {
+    infoEl.style.display = "flex";
+    infoEl.style.flexDirection = "column";
+    highScorePageEl.classList.replace("info", "hide");
+});
+
+clearHighScoresEl.addEventListener("click", function() {
+    window.localStorage.removeItem("high scores");
+    highScoreListEl.innerHTML = "Scores cleared";
+});
+
