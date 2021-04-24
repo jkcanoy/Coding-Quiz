@@ -55,7 +55,7 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: stretch;
+    align-items: center;
 }
 
 .info {

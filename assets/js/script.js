@@ -89,7 +89,7 @@ function newQuiz() {
     var startTimer = setInterval(function() {
         timeTotal--;
         timeLeftEl.textContent = timeTotal;
-        if(timeTotal === 0) {
+        if(timeTotal === 0 || questionIndex === questions.length) {
             clearInterval(startTimer);
             gameOver ();
         }
@@ -195,6 +195,9 @@ function storeHighScore(event) {
 var i = 0;
 function showHighScores() {
 
+    timerEl.style.display = "none";
+    infoEl.classList.replace("info", "hide");
+    quizDivEl.classList.replace("show", "hide");
     endScreenEl.classList.replace("info", "hide");
     highScorePageEl.classList.replace("hide", "info");
 
@@ -221,11 +224,12 @@ initialSubmitBtnEl.addEventListener("click", function(event) {
     storeHighScore(event)
 });
 
-viewHighScoresEl.addEventListener("click", function(event) { 
+viewHighScoresEl.addEventListener("click", function(event) {
     showHighScores(event);
 });
 
 goBackEl.addEventListener("click", function() {
+    timerEl.style.display = "unset"
     infoEl.classList.replace("hide", "info");
     highScorePageEl.classList.replace("info", "hide");
 });
