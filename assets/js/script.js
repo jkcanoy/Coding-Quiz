@@ -1,5 +1,5 @@
 // array of questions/options
-var questions = [
+var questionsArr = [
     {
         question: "What does DOM stand for?",
         options: ["a. Document Object Model", "b. Data Ordered Modem", "c. Dumb Ole Me", "d. Data Object Model"],
@@ -76,10 +76,10 @@ var questionIndex = 0;
 // functions
 
 // when start button is clicked, timer starts
-var timeTotal = 90;
+var timeTotal = 75;
 function newQuiz() {
     questionIndex = 0;
-    timeTotal = 90;
+    timeTotal = 75;
     timeLeftEl.textContent = timeTotal;
     initialInputEl.textContent = "";
 
@@ -89,7 +89,7 @@ function newQuiz() {
     var startTimer = setInterval(function() {
         timeTotal--;
         timeLeftEl.textContent = timeTotal;
-        if(timeTotal === 0 || questionIndex === questions.length) {
+        if(timeTotal === 0 || questionIndex === questionsArr.length) {
             clearInterval(startTimer);
             gameOver ();
         }
@@ -104,11 +104,11 @@ function showQuiz() {
 }
 
 function nextQuestion() {
-    questionEl.textContent = questions[questionIndex].question;
-    optionAEl.textContent = questions[questionIndex].options[0];
-    optionBEl.textContent = questions[questionIndex].options[1];
-    optionCEl.textContent = questions[questionIndex].options[2];
-    optionDEl.textContent = questions[questionIndex].options[3];
+    questionEl.textContent = questionsArr[questionIndex].question;
+    optionAEl.textContent = questionsArr[questionIndex].options[0];
+    optionBEl.textContent = questionsArr[questionIndex].options[1];
+    optionCEl.textContent = questionsArr[questionIndex].options[2];
+    optionDEl.textContent = questionsArr[questionIndex].options[3];
 }
 
 function answerCheck(answer) {
@@ -116,7 +116,7 @@ function answerCheck(answer) {
     lineBreak.style.display = "block";
     checkAnswerEl.style.display = "block";
 
-    if(questions[questionIndex].answer === questions[questionIndex].options[answer]) {
+    if(questionsArr[questionIndex].answer === questionsArr[questionIndex].options[answer]) {
         // answer correct add 1 point to final score
         correctAnswers++;
         checkAnswerEl.textContent = "Correct!";
@@ -128,7 +128,7 @@ function answerCheck(answer) {
     }
 
     questionIndex++;
-    if (questionIndex < questions.length) {
+    if (questionIndex < questionsArr.length) {
         nextQuestion();
     } else {
         gameOver();
@@ -229,7 +229,7 @@ viewHighScoresEl.addEventListener("click", function(event) {
 });
 
 goBackEl.addEventListener("click", function() {
-    timerEl.style.display = "unset"
+    timerEl.style.display = "unset";
     infoEl.classList.replace("hide", "info");
     highScorePageEl.classList.replace("info", "hide");
 });
