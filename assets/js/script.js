@@ -83,7 +83,7 @@ function newQuiz() {
     timeLeftEl.textContent = timeTotal;
     initialInputEl.textContent = "";
 
-    infoEl.style.display = "none";
+    infoEl.classList.replace("info", "hide");
     quizDivEl.classList.replace("hide", "show");
 
     var startTimer = setInterval(function() {
@@ -149,8 +149,7 @@ optionDEl.addEventListener("click", chooseD);
 function gameOver() {
 
     endScreenEl.classList.replace("hide", "info");
-    infoEl.style.display = "none";
-    quizDivEl.style.display = "none";
+    quizDivEl.classList.replace("show", "hide");
     timerEl.style.display = "none";
 
     finalScoreEl.textContent = correctAnswers;
@@ -165,9 +164,7 @@ function storeHighScore(event) {
         return;
     }
 
-    infoEl.style.display = "none";
-    timerEl.style.display = "none";
-    endScreenEl.style.display = "none";
+    endScreenEl.classList.replace("show", "hide");
     highScorePageEl.classList.replace("hide", "info");
 
     // store in local storage
@@ -198,10 +195,7 @@ function storeHighScore(event) {
 var i = 0;
 function showHighScores() {
 
-    infoEl.style.display = "none";
-    quizDivEl.style.display = "none";
-    timerEl.style.display = "none";
-    endScreenEl.style.display = "none";
+    endScreenEl.classList.replace("info", "hide");
     highScorePageEl.classList.replace("hide", "info");
 
     var savedScores = localStorage.getItem("high scores");
@@ -232,7 +226,7 @@ viewHighScoresEl.addEventListener("click", function(event) {
 });
 
 goBackEl.addEventListener("click", function() {
-    infoEl.style.display = "unset";
+    infoEl.classList.replace("hide", "info");
     highScorePageEl.classList.replace("info", "hide");
 });
 
